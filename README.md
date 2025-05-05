@@ -34,6 +34,8 @@ This data engineering project builds an end-to-end ELT (Extract, Load, Transform
 - **Approach**: SQL-based correlation analysis to identify weather patterns
 - **Insights**: Testing thesis of precipitation intensity association with temperature
 
+![Visualization](pyh-data-project-image.png)
+
 ## Repository Contents
 - `/lambda`: AWS Lambda code for extracting NOAA API data
 - `/redshift`: SQL transformation logic
