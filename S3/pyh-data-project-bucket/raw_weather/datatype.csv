@@ -1,0 +1,8 @@
+mindate,maxdate,name,datacoverage,id
+1991-06-05,2025-05-03,Base Data,0.95,ALL
+1982-01-01,2025-05-01,Average wind speed,1.0,AWND
+1750-05-04,2025-05-02,Precipitation,1.0,HPCP
+1781-01-01,2025-05-02,Precipitation,1.0,PRCP
+1763-01-01,2025-05-02,Average Temperature.,1.0,TAVG
+1763-01-01,2025-05-02,Maximum temperature,1.0,TMAX
+1763-01-01,2025-05-02,Minimum temperature,1.0,TMIN

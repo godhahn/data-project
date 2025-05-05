@@ -1,30 +1,40 @@
-# Data Engineering Project: Weather Insights
+# Weather Analytics Pipeline
 
-## Overview  
-This is an ongoing **data engineering project** focused on building an end-to-end ELT pipeline using **AWS services**. The project collects daily weather data and aims to uncover insights and potential predictive patterns using **AWS Lambda**, **Amazon S3**, **Amazon Redshift**, and **Amazon QuickSight**.
+## Project Overview
+This data engineering project builds an end-to-end ELT (Extract, Load, Transform) pipeline using AWS services to collect, process, and analyze weather data from the NOAA Climate Data Online API. The primary focus is investigating the relationship between precipitation intensity and temperature in Singapore through real-time data analysis.
 
----
+## Architecture
 
-## Current Progress
+### NOAA API → AWS Lambda → S3 → Redshift
 
-### Extraction & Loading (EL) – Completed
-- Automated daily ingestion of weather data.
-- Collected parameters include:
-  - Rainfall  
-  - Wind speed  
-  - Temperature  
-- Data is stored in **Amazon S3**, triggered and processed using **AWS Lambda**, and loaded into **Amazon Redshift**.
-- **SQL** queries are used within Redshift to organize and extract meaningful data for analysis.
+### Data Flow
+1. **Extract**: AWS Lambda function fetches daily weather data from NOAA API (daily at 9:00 AM)
+2. **Load**: Raw data is stored in Amazon S3 buckets
+3. **Transform**: Data is loaded into Amazon Redshift via COPY command (daily at 10:00 AM)
+4. **Analyze**: SQL transformations create views for precipitation and temperature analysis
 
-### Transformation (T) – In Progress
-- Writing **SQL-based transformations** to clean, join, and structure the raw data.
-- Developing dashboards and visualizations in **Amazon QuickSight** to:
-  - Analyze trends and relationships between weather parameters.
-  - Explore the feasibility of integrating weather prediction features using historical patterns.
+## Technical Components
 
----
+### Extraction & Loading
+- **Data Source**: NOAA Climate Data Online (CDO) Web API
+- **Parameters**: Temperature (avg, min, max), precipitation, wind speed
+- **Scheduling**: Daily extraction at 9:00 AM using CloudWatch Events
+- **Storage**: Raw CSV files in S3 (`pyh-data-project-bucket/raw_weather/`)
+- **Redshift Loading**: Automated COPY command scheduled daily at 10:00 AM
 
-## Next Steps
-- Finalize SQL transformation logic in Redshift.
-- Implement a basic predictive analytics or forecasting model (optional).
-- Complete and publish the QuickSight dashboard for insights sharing.
+### Transformation
+- **Data Modeling**: SQL views in Redshift for:
+  - Joining weather measurements with station and datatype metadata
+  - Filtering records for Singapore Changi International Airport
+  - Pivoting measurements to create analysis-ready datasets
+- **Key Metrics**: Daily precipitation (mm) and average temperature (°C)
+
+### Analysis
+- **Research Question**: Is precipitation intensity associated with temperature patterns?
+- **Approach**: SQL-based correlation analysis to identify weather patterns
+- **Insights**: Testing thesis of precipitation intensity association with temperature
+
+## Repository Contents
+- `/lambda`: AWS Lambda code for extracting NOAA API data
+- `/redshift`: SQL transformation logic
+- `/s3`: Extracted data

@@ -1,0 +1,4 @@
+COPY dev.public.weather_data FROM 's3://pyh-data-project-bucket/raw_weather/weather.csv' IAM_ROLE 'IAM' FORMAT AS CSV DELIMITER ',' QUOTE '"' IGNOREHEADER 1 REGION AS 'ap-southeast-1';
+COPY dev.public.station_data FROM 's3://pyh-data-project-bucket/raw_weather/station.csv' IAM_ROLE 'IAM' FORMAT AS CSV DELIMITER ',' QUOTE '"' IGNOREHEADER 1 REGION AS 'ap-southeast-1';
+COPY dev.public.datatype_data FROM 's3://pyh-data-project-bucket/raw_weather/datatype.csv' IAM_ROLE 'IAM' FORMAT AS CSV DELIMITER ',' QUOTE '"' IGNOREHEADER 1 REGION AS 'ap-southeast-1';
+COPY dev.public.dataset_data FROM 's3://pyh-data-project-bucket/raw_weather/dataset.csv' IAM_ROLE 'IAM' FORMAT AS CSV DELIMITER ',' QUOTE '"' IGNOREHEADER 1 REGION AS 'ap-southeast-1';
