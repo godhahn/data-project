@@ -1,4 +1,4 @@
-# Weather Analytics Pipeline
+# Weather Analytics ELT Pipeline
 
 ## Project Overview
 This data engineering project builds an end-to-end ELT (Extract, Load, Transform) pipeline using AWS services to collect, process, and analyze weather data from the NOAA Climate Data Online API. The primary focus is investigating the relationship between precipitation intensity and temperature in Singapore through real-time data analysis.
